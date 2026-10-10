@@ -118,9 +118,8 @@ section{padding:72px 0}
   .dia-cab{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
   .dia-cab span{background:var(--vinho);color:#fff;font-weight:800;font-size:22px;border-radius:999px;padding:4px 22px}
   .dia-cab em{color:var(--texto-suave);font-style:normal}
-  .dia[hidden]{display:block}
 }
-@media (max-width:899px){.dias{grid-template-columns:1fr}}
+@media (max-width:899px){.dias{grid-template-columns:1fr}.dia.inativo{display:none}}
 .linha-tempo{list-style:none;margin:0;padding:0;position:relative}
 .linha-tempo::before{content:"";position:absolute;left:94px;top:8px;bottom:8px;width:2px;background:var(--linha)}
 .item{display:grid;grid-template-columns:82px 1fr;gap:24px;position:relative;padding:0 0 16px}
@@ -303,7 +302,7 @@ footer .rotulo.apoio{display:block;text-align:center;margin-bottom:10px}
         </ol>
       </div>
 
-      <div class="dia" id="dia10" role="tabpanel" aria-labelledby="aba10" hidden>
+      <div class="dia inativo" id="dia10" role="tabpanel" aria-labelledby="aba10">
         <div class="dia-cab"><span>DIA 10</span><em>Terça-feira</em></div>
         <ol class="linha-tempo">
           <li class="item"><div class="hora">9h–12h</div><div class="bloco">
@@ -388,7 +387,7 @@ document.querySelectorAll('.aba').forEach(function(b){
     document.querySelectorAll('.aba').forEach(function(x){
       var on = x===b;
       x.setAttribute('aria-selected', on);
-      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      document.getElementById(x.getAttribute('aria-controls')).classList.toggle('inativo', !on);
     });
   });
 });
